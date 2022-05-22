@@ -1,0 +1,25 @@
+#!/bin/sh
+
+echo "This small shell script exists because I need a tool to switch"
+echo "keyboard layouts on my OpenBSD system."
+echo
+
+exec 3>&1;
+result=$(dialog --menu "Please pick one:" 10 30 3 1 "gb mac" 2 gb 3 pl 2>&1 1>&3);
+case $result in
+    1)
+        setxkbmap 'gb(mac)'
+        ;;
+    2)
+        setxkbmap gb
+        ;;
+    3)
+        setxkbmap pl
+        ;;
+    *)
+        ;;
+esac
+
+exec 3>&-;
+clear
+setxkbmap -query | grep layout

@@ -1,0 +1,3 @@
+setxkb - set the keyboard layout
+
+It is a simple shell script I use to switch keyboard layouts on my OpenBSD system.
